@@ -1,95 +1,130 @@
 import Link from "next/link";
-import Image from "next/image";
+import { Row, Col, Card, CardImg, CardBody, CardTitle, CardText, Button } from "react-bootstrap";
+
 export default function Dashboard() {
   return (
     <div id="wd-dashboard">
-      <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
-      <h2 id="wd-dashboard-published">Published Courses (12)</h2> <hr />
+      <h1 id="wd-dashboard-title">Dashboard</h1>
+      <hr />
+      <h2 id="wd-dashboard-published">Published Courses (12)</h2>
+      <hr />
       <div id="wd-dashboard-courses">
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/1234" className="wd-dashboard-course-link">
-            <Image src="/images/reactjs.jpg" width={200} height={150} alt={"react"} />
-            <div>
-              <h5> CS1234 React JS </h5>
-              <p className="wd-dashboard-course-title">
-                Full Stack software developer
-              </p>
-              <button> Go </button>
-            </div>
-          </Link>
-        </div>
-        <div className="wd-dashboard-course"> 
-            <Link href="/Courses/2234" className="wd-dashboard-course-link">
-                <Image src="/images/ios.jpg" width={200} height={150} alt={"ios"} />
-                <div>
-                <h5> CS2234 </h5>
-                <p className="wd-dashboard-course-title">
+        <Row xs={1} md={5} className="g-4">
+          
+          {/* Course 1234 */}
+          <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+            <Card>
+              <Link href="/Courses/1234/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
+                <CardImg src="/images/reactjs.jpg" style={{ width: "100%", height: "160px", objectFit: "cover" }} />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">CS1234 React JS</CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
+                    Full Stack software developer
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
+
+          {/* Course 2234 */}
+          <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+            <Card>
+              <Link href="/Courses/2234/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
+                <CardImg src="/images/ios.jpg" style={{ width: "100%", height: "160px", objectFit: "cover" }} />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">CS2234</CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
                     IOS Mobile App Development
-                </p>
-                <button> Go </button>
-                </div>
-            </Link>
-        </div>
-        <div className="wd-dashboard-course">
-            <Link href="/Courses/4444" className="wd-dashboard-course-link">
-                <Image src="/images/uiux.jpg" width={200} height={150} alt={"uiux"} />
-                <div>
-                <h5> CS4444 </h5>
-                <p className="wd-dashboard-course-title">
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
+
+          {/* Course 4444 */}
+          <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+            <Card>
+              <Link href="/Courses/4444/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
+                <CardImg src="/images/uiux.jpg" style={{ width: "100%", height: "160px", objectFit: "cover" }} />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">CS4444</CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
                     UIUX Principles
-                </p>
-                <button> Go </button>
-                </div>
-            </Link>
-        </div>
-        <div className="wd-dashboard-course">
-            <Link href="/Courses/5678" className="wd-dashboard-course-link">
-                <Image src="/images/ibd.jpg" width={200} height={150} alt={"ibd"} />
-                <div>
-                <h5> DE5678 </h5>
-                <p className="wd-dashboard-course-title">
-                    Identy and Brand Design
-                </p>
-                <button> Go </button>
-                </div>
-            </Link>
-        </div>
-        <div className="wd-dashboard-course">
-            <Link href="/Courses/6678" className="wd-dashboard-course-link">
-                <Image src="/images/interaction.jpg" width={200} height={150} alt={"interaction"} />
-                <div>
-                <h5> DE6678 </h5>
-                <p className="wd-dashboard-course-title">
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
+
+          {/* Course 5678 */}
+          <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+            <Card>
+              <Link href="/Courses/5678/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
+                <CardImg src="/images/ibd.jpg" style={{ width: "100%", height: "160px", objectFit: "cover" }} />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">DE5678</CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
+                    Identity and Brand Design
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
+
+          {/* Course 6678 */}
+          <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+            <Card>
+              <Link href="/Courses/6678/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
+                <CardImg src="/images/interaction.jpg" style={{ width: "100%", height: "160px", objectFit: "cover" }} />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">DE6678</CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
                     Interaction Design
-                </p>
-                <button> Go </button>
-                </div>
-            </Link>
-        </div>
-        <div className="wd-dashboard-course">
-            <Link href="/Courses/7778" className="wd-dashboard-course-link">
-                <Image src="/images/experience.jpg" width={200} height={150} alt={"experience"} />
-                <div>
-                <h5> DE7778 </h5>
-                <p className="wd-dashboard-course-title">
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
+
+          {/* Course 7778 */}
+          <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+            <Card>
+              <Link href="/Courses/7778/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
+                <CardImg src="/images/experience.jpg" style={{ width: "100%", height: "160px", objectFit: "cover" }} />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">DE7778</CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
                     Experience Design
-                </p>
-                <button> Go </button>
-                </div>
-            </Link>
-        </div>
-        <div className="wd-dashboard-course">
-            <Link href="/Courses/8888" className="wd-dashboard-course-link">
-                <Image src="/images/xd.jpg" width={200} height={150} alt={"xd"} />
-                <div>
-                <h5> DE8888 </h5>
-                <p className="wd-dashboard-course-title">
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
+
+          {/* Course 8888 */}
+          <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+            <Card>
+              <Link href="/Courses/8888/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
+                <CardImg src="/images/xd.jpg" style={{ width: "100%", height: "160px", objectFit: "cover" }} />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">DE8888</CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
                     XR Design
-                </p>
-                <button> Go </button>
-                </div>
-            </Link>
-        </div>
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
+
+        </Row>
       </div>
     </div>
-);}
+  );
+}
