@@ -1,37 +1,97 @@
+import { ListGroup, ListGroupItem } from "react-bootstrap";
+import { BsGripVertical } from "react-icons/bs";
+import AssignmentControlButtons from "./AssignmentControlButtons";
+import AssignmentControls from "./AssignmentControls";
 import Link from "next/link";
 
-export default function Assignments() {
-    return (
-      <div id="wd-assignments">
-        <input placeholder="Search for Assignments" id="wd-search-assignment" /> <button id="wd-add-assignment-group">+ Group</button> <button id="wd-add-assignment">+ Assignment</button>
-        <h3 id="wd-assignments-title">
-          ASSIGNMENTS 40% of Total <button>+</button> </h3>
-        <ul id="wd-assignment-list">
-            <li className="wd-assignment-list-item">
-                <Link href="/Courses/1234/Assignments/123"
-                className="wd-assignment-link" >
-                A1 - ENV + HTML
-                </Link> <br></br>
-                Multiple Modules | <strong>Not available until</strong> May 6 at 12:00am | <br></br>
-                <strong>Due</strong> May 13 at 11:59pm | 100 pts
-            </li>
-            <li className="wd-assignment-list-item">
-                <Link href="/Courses/1234/Assignments/456"
-                className="wd-assignment-link" >
-                A2 - CSS + BOOTSTRAP
-                </Link> <br></br>
-                Multiple Modules | <strong>Not available until</strong> May 13 at 12:00am | <br></br>
-                <strong>Due</strong> May 20 at 11:59pm | 100 pts
-            </li>
-            <li className="wd-assignment-list-item">
-                <Link href="/Courses/1234/Assignments/789"
-                className="wd-assignment-link" >
-                A3 - JAVASCRIPT + REACT
-                </Link> <br></br>
-                Multiple Modules | <strong>Not available until</strong> May 20 at 12:00am | <br></br>
-                <strong>Due</strong> May 27 at 11:59pm | 100 pts
-            </li>
-        </ul>
-      </div>
-  );}
-  
+export default async function Assignments({ params, }: { params: Promise<{ cid: string }>; }) {
+  const { cid } = await params;
+  return (
+    <div>
+      <AssignmentControls /><br /><br /><br />
+
+      <ListGroup className="rounded-0" id="wd-assignments">
+        {/* Assignments Section */}
+        <ListGroupItem className="wd-assignment p-0 mb-5 fs-5 border-gray">
+          <div className="wd-title p-3 ps-2 bg-secondary d-flex align-items-center justify-content-between">
+          <div className="d-flex align-items-center">
+            <BsGripVertical className="me-2 fs-3" />
+            <span className="fw-semibold">ASSIGNMENTS</span>
+          </div>
+
+          <div className="d-flex align-items-center gap-3">
+            <span className="border rounded-pill px-3 py-1 small text-dark">
+              40% of Total
+            </span>
+            <span className="fs-5 fw-bold text-dark">+</span>
+            <span className="fs-4 text-dark">⋮</span>
+          </div>
+        </div>
+
+          {/* Assignment List */}
+          <ListGroup className="rounded-0">
+
+            {/* A1 */}
+            <ListGroupItem className="wd-lesson p-3 ps-1 d-flex justify-content-between align-items-start">
+            <Link href={`/Courses/${cid}/Assignments/A1`} className="flex-grow-1 text-decoration-none text-dark">
+              <div className="d-flex">
+                <BsGripVertical className="me-3 fs-3 text-secondary" />
+                <div>
+                  <div className="fw-semibold">A1</div>
+                  <div className="text-secondary mt-1 small">
+                    <span className="text-danger fw-normal">Multiple Modules</span> |
+                    <span className="fw-semibold"> Not available until</span> May 6 at 12:00am |
+                  </div>
+                  <div className="text-secondary mt-1 small">
+                    <span className="fw-semibold"> Due</span> May 13 at 11:59pm | 100 pts
+                  </div>
+                </div>
+              </div>
+              </Link>
+              <AssignmentControlButtons />
+            </ListGroupItem>
+
+            {/* A2 */}
+            <ListGroupItem className="wd-lesson p-3 ps-1 d-flex justify-content-between align-items-start">
+            <Link href={`/Courses/${cid}/Assignments/A2`} className="flex-grow-1 text-decoration-none text-dark">
+              <div className="d-flex">
+                <BsGripVertical className="me-3 fs-3 text-secondary" />
+                <div>
+                  <div className="fw-semibold">A2</div>
+                  <div className="text-secondary mt-1 small">
+                    <span className="text-danger fw-normal">Multiple Modules</span> |
+                    <span className="fw-semibold"> Not available until</span> May 13 at 12:00am |
+                  </div>
+                  <div className="text-secondary mt-1 small">
+                    <span className="fw-semibold"> Due</span> May 20 at 11:59pm | 100 pts
+                  </div>
+                </div>
+              </div>
+              </Link>
+              <AssignmentControlButtons />
+            </ListGroupItem>
+
+            {/* A3 */}
+            <ListGroupItem className="wd-lesson p-3 ps-1 d-flex justify-content-between align-items-start">
+              <div className="d-flex">
+                <BsGripVertical className="me-3 fs-3 text-secondary" />
+                <div>
+                  <div className="fw-semibold">A3</div>
+                  <div className="text-secondary mt-1 small">
+                    <span className="text-danger fw-normal">Multiple Modules</span> |
+                    <span className="fw-semibold"> Not available until</span> May 20 at 12:00am |
+                  </div>
+                  <div className="text-secondary mt-1 small">
+                    <span className="fw-semibold"> Due</span> May 27 at 11:59pm | 100 pts
+                  </div>
+                </div>
+              </div>
+              <AssignmentControlButtons />
+            </ListGroupItem>
+
+          </ListGroup>
+        </ListGroupItem>
+      </ListGroup>
+    </div>
+  );
+}
