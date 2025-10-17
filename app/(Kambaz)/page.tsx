@@ -5,5 +5,6 @@ export default function Kambaz() {
       <div id="wd-kambaz">
         <h1>Kambaz</h1>
       </div>
-  );}
+  );
+}
   

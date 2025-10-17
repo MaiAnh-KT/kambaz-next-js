@@ -1,107 +1,44 @@
+"use client";
+
 import Link from "next/link";
 import { ListGroup, ListGroupItem, Button } from "react-bootstrap";
+import { usePathname } from "next/navigation";
 
-export default function CourseNavigation() {
+export default function CourseNavigation({ cid }: { cid: string }) {
+  const pathname = usePathname();
+
+  const links = [
+    "Home",
+    "Modules",
+    "Piazza",
+    "Zoom",
+    "Assignments",
+    "Quizzes",
+    "Grades",
+    "People",
+  ];
+
   return (
     <div id="wd-courses-navigation">
       <ListGroup variant="flush" className="wd">
+        {links.map((link) => {
+          const href = `/Courses/${cid}/${link}`;
+          const isActive = pathname?.startsWith(href);
 
-        <ListGroupItem className="p-0 border-0 active">
-          <Link href="/Courses/1234/Home" passHref>
-            <Button
-              variant="light"
-              className="w-100 text-start border-0 rounded-0 wd-course-button"
-              id="wd-course-home-link"
-            >
-              Home
-            </Button>
-          </Link>
-        </ListGroupItem>
-
-        <ListGroupItem className="p-0 border-0">
-          <Link href="/Courses/1234/Modules" passHref>
-            <Button
-              variant="light"
-              className="w-100 text-start border-0 rounded-0 wd-course-button"
-              id="wd-course-modules-link"
-            >
-              Modules
-            </Button>
-          </Link>
-        </ListGroupItem>
-
-        <ListGroupItem className="p-0 border-0">
-          <Link href="/Courses/1234/Piazza" passHref>
-            <Button
-              variant="light"
-              className="w-100 text-start border-0 rounded-0 wd-course-button"
-              id="wd-course-piazza-link"
-            >
-              Piazza
-            </Button>
-          </Link>
-        </ListGroupItem>
-
-        <ListGroupItem className="p-0 border-0">
-          <Link href="/Courses/1234/Zoom" passHref>
-            <Button
-              variant="light"
-              className="w-100 text-start border-0 rounded-0 wd-course-button"
-              id="wd-course-zoom-link"
-            >
-              Zoom
-            </Button>
-          </Link>
-        </ListGroupItem>
-
-        <ListGroupItem className="p-0 border-0">
-          <Link href="/Courses/1234/Assignments" passHref>
-            <Button
-              variant="light"
-              className="w-100 text-start border-0 rounded-0 wd-course-button"
-              id="wd-course-assignments-link"
-            >
-              Assignments
-            </Button>
-          </Link>
-        </ListGroupItem>
-
-        <ListGroupItem className="p-0 border-0">
-          <Link href="/Courses/1234/Quizzes" passHref>
-            <Button
-              variant="light"
-              className="w-100 text-start border-0 rounded-0 wd-course-button"
-              id="wd-course-quizzes-link"
-            >
-              Quizzes
-            </Button>
-          </Link>
-        </ListGroupItem>
-
-        <ListGroupItem className="p-0 border-0">
-          <Link href="/Courses/1234/Grades" passHref>
-            <Button
-              variant="light"
-              className="w-100 text-start border-0 rounded-0 wd-course-button"
-              id="wd-course-grades-link"
-            >
-              Grades
-            </Button>
-          </Link>
-        </ListGroupItem>
-
-        <ListGroupItem className="p-0 border-0">
-          <Link href="/Courses/1234/People" passHref>
-            <Button
-              variant="light"
-              className="w-100 text-start border-0 rounded-0 wd-course-button"
-              id="wd-course-people-link"
-            >
-              People
-            </Button>
-          </Link>
-        </ListGroupItem>
-
+          return (
+            <ListGroupItem key={link} className="p-0 border-0">
+              <Link href={href} passHref>
+                <Button
+                  variant={isActive ? "danger" : "light"}
+                  className="w-100 text-start border-0 rounded-0 wd-course-button"
+                  id={`wd-course-${link.toLowerCase()}-link`}
+                >
+                  {link}
+                </Button>
+              </Link>
+            </ListGroupItem>
+          );
+        })}
       </ListGroup>
     </div>
   );

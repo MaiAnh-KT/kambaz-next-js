@@ -1,8 +1,17 @@
 "use client";
 
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Row, Col, Button } from "react-bootstrap";
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import * as db from "../../../../Database";
 
 export default function AssignmentEditor() {
+  const { cid, aid } = useParams();
+  const assignment = db.assignments.find(a => a.id === aid);
+
+  if (!assignment) {
+    return <div className="p-4">Assignment not found.</div>;
+  }
 
   return (
     <div id="wd-assignments-editor" className="p-4">
@@ -10,7 +19,7 @@ export default function AssignmentEditor() {
         {/* Assignment Name */}
         <Form.Group className="mb-3" controlId="wd-name">
           <Form.Label>Assignment Name</Form.Label>
-          <Form.Control type="text" defaultValue={`A1 - ENV + HTML`} />
+          <Form.Control type="text" defaultValue={assignment.title} />
         </Form.Group>
 
         {/* Description */}
@@ -19,7 +28,7 @@ export default function AssignmentEditor() {
           <Form.Control
             as="textarea"
             rows={3}
-            defaultValue="The assignment is available online. Submit a link to the landing page of"
+            defaultValue={assignment.description || "No description provided."}
           />
         </Form.Group>
 
@@ -28,13 +37,13 @@ export default function AssignmentEditor() {
           <Col md={6}>
             <Form.Group controlId="wd-points">
               <Form.Label>Points</Form.Label>
-              <Form.Control type="number" defaultValue={100} />
+              <Form.Control type="number" defaultValue={assignment.points || 100} />
             </Form.Group>
           </Col>
           <Col md={6}>
             <Form.Group controlId="wd-group">
               <Form.Label>Assignment Group</Form.Label>
-              <Form.Select defaultValue="ASSIGNMENTS">
+              <Form.Select defaultValue={"ASSIGNMENTS"}>
                 <option value="ASSIGNMENTS">ASSIGNMENTS</option>
               </Form.Select>
             </Form.Group>
@@ -46,7 +55,7 @@ export default function AssignmentEditor() {
           <Col md={6}>
             <Form.Group controlId="wd-display-grade-as">
               <Form.Label>Display Grade As</Form.Label>
-              <Form.Select defaultValue="PERCENTAGE">
+              <Form.Select defaultValue={"PERCENTAGE"}>
                 <option value="PERCENTAGE">Percentage</option>
               </Form.Select>
             </Form.Group>
@@ -54,7 +63,7 @@ export default function AssignmentEditor() {
           <Col md={6}>
             <Form.Group controlId="wd-submission-type">
               <Form.Label>Submission Type</Form.Label>
-              <Form.Select defaultValue="ONLINE">
+              <Form.Select defaultValue={"ONLINE"}>
                 <option value="ONLINE">Online</option>
               </Form.Select>
             </Form.Group>
@@ -65,18 +74,21 @@ export default function AssignmentEditor() {
         <Form.Group className="mb-3">
           <Form.Label>Online Entry Options</Form.Label>
           <div>
-            <Form.Check type="checkbox" id="wd-text-entry" label="Text Entry" />
-            <Form.Check type="checkbox" id="wd-website-url" label="Website URL" />
-            <Form.Check type="checkbox" id="wd-media-recordings" label="Media Recordings" />
-            <Form.Check type="checkbox" id="wd-student-annotation" label="Student Annotation" />
-            <Form.Check type="checkbox" id="wd-file-upload" label="File Upload" />
+            {["Text Entry", "Website URL", "Media Recordings", "Student Annotation", "File Upload"].map((opt, idx) => (
+              <Form.Check
+                key={idx}
+                type="checkbox"
+                id={`wd-option-${idx}`}
+                label={opt}
+              />
+            ))}
           </div>
         </Form.Group>
 
         {/* Assign To */}
         <Form.Group className="mb-3" controlId="wd-assign-to">
           <Form.Label>Assign To</Form.Label>
-          <Form.Control type="text" defaultValue="Everyone" />
+          <Form.Control type="text" defaultValue={"Everyone"} />
         </Form.Group>
 
         {/* Due and Availability Dates */}
@@ -84,29 +96,31 @@ export default function AssignmentEditor() {
           <Col md={4}>
             <Form.Group controlId="wd-due-date">
               <Form.Label>Due</Form.Label>
-              <Form.Control type="date" defaultValue="2024-05-13" />
+              <Form.Control type="date" defaultValue={assignment.dueDate || "2024-05-13"} />
             </Form.Group>
           </Col>
           <Col md={4}>
             <Form.Group controlId="wd-available-from">
               <Form.Label>Available From</Form.Label>
-              <Form.Control type="date" defaultValue="2024-05-06" />
+              <Form.Control type="date" defaultValue={assignment.availableFrom || "2024-05-06"} />
             </Form.Group>
           </Col>
           <Col md={4}>
             <Form.Group controlId="wd-available-until">
               <Form.Label>Available Until</Form.Label>
-              <Form.Control type="date" defaultValue="2024-05-06" />
+              <Form.Control type="date" defaultValue={assignment.availableTo || "2024-05-20"} />
             </Form.Group>
           </Col>
         </Row>
 
         {/* Action Buttons */}
         <div className="text-end">
-          <Button variant="secondary" className="me-2">
+          <Link href={`/Courses/${cid}/Assignments`} className="btn btn-secondary me-2">
             Cancel
-          </Button>
-          <Button variant="danger">Save</Button>
+          </Link>
+          <Link href={`/Courses/${cid}/Assignments`} className="btn btn-danger">
+            Save
+          </Link>
         </div>
       </Form>
     </div>
