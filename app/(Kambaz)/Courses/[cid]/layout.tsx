@@ -9,9 +9,9 @@ export default async function CoursesLayout({
   params,
 }: {
   children: ReactNode;
-  params: { cid: string };
+  params: Promise <{ cid: string }>;
 }) {
-  const { cid } = params;
+  const { cid } = await params;
   const course = courses.find((course) => course.id === cid);
 
 return (
