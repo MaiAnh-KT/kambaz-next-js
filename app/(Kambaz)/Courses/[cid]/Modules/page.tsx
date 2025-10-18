@@ -10,7 +10,8 @@ import LessonControlButtons from "./LessonControlButtons";
 
 export default function Modules() {
   const { cid } = useParams();
-  const modules = db.modules.filter((module: any) => module.course === cid);
+  const modules = db.modules.filter((module: any) => module.id === cid);
+  console.log(modules)
 
   return (
     <div>

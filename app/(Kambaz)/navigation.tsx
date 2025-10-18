@@ -59,7 +59,7 @@ export default function KambazNavigation() {
         const IconComponent = link.icon;
         return (
           <ListGroupItem
-            key={link.path}
+            key={link.label}
             as={Link}
             href={link.path}
             className={`text-center border-0 ${
