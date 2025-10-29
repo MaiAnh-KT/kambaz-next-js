@@ -48,10 +48,10 @@ export default function Assignments() {
                       <div className="fw-semibold">{assignment.title}</div>
                       <div className="text-secondary mt-1 small">
                         <span className="text-danger fw-normal">Multiple Modules</span> |
-                        <span className="fw-semibold"> Not available until</span> TBD |
+                        <span className="fw-semibold"> Not available until</span> {assignment.availableFrom}
                       </div>
                       <div className="text-secondary mt-1 small">
-                        <span className="fw-semibold"> Due</span> TBD | 100 pts
+                        <span className="fw-semibold"> Due</span> {assignment.availableTo} | {assignment.points} pts
                       </div>
                     </div>
                   </div>
