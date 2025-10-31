@@ -9,14 +9,18 @@ import ObjectStateVariable from "./ObjectStateVariable";
 import ParentStateComponent from "./ParentStateComponent";
 import PassingDataOnEvent from "./PassingDataOnEvent";
 import PassingFunctions from "./PassingFunctions";
+import HelloRedux from "./ReduxExamples/HelloRedux";
 import ReduxExamples from "./ReduxExamples/page";
 import StringStateVariables from "./StringStateVariables";
+import store from "./store";
+import { Provider } from "react-redux";
 
 export default function Lab4() {
     function sayHello() {
         alert("Hello");
     }
   return (
+    <Provider store={store}>
       <div>
         <h2>Lab 4</h2>
         <ClickEvent/>
@@ -30,8 +34,9 @@ export default function Lab4() {
         <ObjectStateVariable/>
         <ArrayStateVariable/>
         <ParentStateComponent/>
-        
+
         <ReduxExamples/>
       </div>
+      </Provider>
   );}
   
