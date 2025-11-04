@@ -13,7 +13,7 @@ export default function PeopleTable() {
   const { users, enrollments } = db;
 
   const courseUsers = users.filter((usr) =>
-    enrollments.some((enrollment) => enrollment.user === usr._id && enrollment.course === cid)
+    enrollments.some((enrollment) => enrollment.user === usr.id && enrollment.course === cid)
   );
 
   return (
