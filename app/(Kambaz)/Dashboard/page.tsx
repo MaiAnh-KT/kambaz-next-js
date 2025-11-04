@@ -5,39 +5,25 @@ import Link from "next/link";
 import { Row, Col, Card, CardImg, CardBody, CardTitle, CardText, Button, FormControl } from "react-bootstrap";
 // import * as db from "../Database";
 import { useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import { addNewCourse, deleteCourse, updateCourse } from "../Courses/reducer";
+import * as db from "../Database";
+import { RootState } from "../store";
 export default function Dashboard() {
   // const courses = db.courses;
   // const [courses, setCourses] = useState<any[]>(db.courses);
   const { courses } = useSelector((state: any) => state.coursesReducer);
+  const { currentUser } = useSelector((state: RootState) => state.accountReducer);
+  const { enrollments } = db;
   const dispatch = useDispatch();
   const [course, setCourse] = useState<any>({
     _id: "0", name: "New Course",
     startDate: "2023-09-10", endDate: "2023-12-15",
     image: "images/LOOPY.png", description: "New Description"
   });
-  
-  // const addNewCourse = () => {
-  //   const newCourse = { ...course, _id: uuidv4() };
-  //   setCourses([...courses, newCourse ]);
-  // };
-  // const deleteCourse = (courseId: string) => {
-  //   setCourses(courses.filter((course) => course._id !== courseId));
-  // };
-  // const updateCourse = () => {
-  //   setCourses(
-  //     courses.map((c) => {
-  //       if (c._id === course._id) {
-  //         return course;
-  //       } else {
-  //         return c;
-  //       }
-  //     })
-  //   );
-  // };
-
+  if (!currentUser) {
+    return <div>Redirecting to Sign in...</div>;
+  }
   return (
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1><hr />
@@ -58,7 +44,12 @@ export default function Dashboard() {
       <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2><hr />
       <div id="wd-dashboard-courses">
         <Row xs={1} md={5} className="g-4">
-          {courses.map((course: any) => (
+          {courses
+          // .filter((course: { id: string; }) =>
+          //   enrollments.some(
+          //     (enrollment) =>
+          //       enrollment.user === currentUser.id && enrollment.course === course.id))
+          .map((course: any) => (
             <Col key={course.id} className="wd-dashboard-course" style={{ width: "300px" }}>
               <Card>
                 <Link
