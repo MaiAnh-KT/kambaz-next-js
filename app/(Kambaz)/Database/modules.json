@@ -1,6 +1,6 @@
 [
     {
-        "id": "1234",
+        "_id": "1234",
         "name": "React JS",
         "description": "Basic principles of React JS.",
         "course": "CS1234",
@@ -26,7 +26,7 @@
         ]
     },
     {
-        "id": "2234",
+        "_id": "2234",
         "name": "iOS Mobile App Development",
         "description": "iOS Mobile App Development",
         "course": "CS2234",
@@ -52,7 +52,7 @@
         ]
       },
       {
-        "id": "4444",
+        "_id": "4444",
         "name": "UIUX Principles",
         "description": "UIUX Principles",
         "course": "CS4444",
@@ -78,7 +78,7 @@
         ]
       },
       {
-        "id": "5678",
+        "_id": "5678",
         "name": "Identity and Brand Design",
         "description": "Identity and Brand Design",
         "course": "DE5678",
@@ -104,7 +104,7 @@
         ]
       },
       {
-        "id": "6678",
+        "_id": "6678",
         "name": "Interaction Design",
         "description": "Interaction Design",
         "course": "DE6678",
@@ -130,7 +130,7 @@
         ]
       },
       {
-        "id": "7778",
+        "_id": "7778",
         "name": "Experience Design",
         "description": "Experience Design",
         "course": "DE7778",
@@ -156,7 +156,7 @@
         ]
       },
       {
-        "id": "8888",
+        "_id": "8888",
         "name": "XR Design",
         "description": "XR Design",
         "course": "DE8888",
@@ -182,7 +182,7 @@
         ]
     },
     {
-      "id": "M101",
+      "_id": "M101",
       "name": "Introduction to Rocket Propulsion",
       "description": "Basic principles of rocket propulsion and rocket engines.",
       "course": "RS101",
@@ -208,7 +208,7 @@
       ]
     },
     {
-      "id": "M102",
+      "_id": "M102",
       "name": "Fuel and Combustion",
       "description": "Understanding rocket fuel, combustion processes, and efficiency.",
       "course": "RS101",
@@ -234,7 +234,7 @@
       ]
     },
     {
-      "id": "M103",
+      "_id": "M103",
       "name": "Nozzle Design",
       "description": "Principles of rocket nozzle design and performance optimization.",
       "course": "RS101",
@@ -260,37 +260,37 @@
       ]
     },
     {
-      "id": "M201",
+      "_id": "M201",
       "name": "Fundamentals of Aerodynamics",
       "description": "Basic aerodynamic concepts and fluid dynamics principles.",
       "course": "RS102"
     },
     {
-      "id": "M202",
+      "_id": "M202",
       "name": "Subsonic and Supersonic Flow",
       "description": "Understanding subsonic and supersonic aerodynamic behaviors.",
       "course": "RS102"
     },
     {
-      "id": "M203",
+      "_id": "M203",
       "name": "Aerodynamic Heating",
       "description": "Study of aerodynamic heating and thermal protection systems.",
       "course": "RS102"
     },
     {
-      "id": "M301",
+      "_id": "M301",
       "name": "Spacecraft Structural Design",
       "description": "Fundamentals of designing spacecraft structures and materials selection.",
       "course": "RS103"
     },
     {
-      "id": "M302",
+      "_id": "M302",
       "name": "Orbital Mechanics",
       "description": "Understanding orbital dynamics and mission planning.",
       "course": "RS103"
     },
     {
-      "id": "M303",
+      "_id": "M303",
       "name": "Spacecraft Systems Engineering",
       "description": "Overview of spacecraft systems and subsystems engineering.",
       "course": "RS103"
