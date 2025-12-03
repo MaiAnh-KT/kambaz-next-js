@@ -9,7 +9,7 @@ import * as client from "../Courses/client";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewCourse, deleteCourse, updateCourse, setCourses } from "../Courses/reducer";
-import * as db from "../Database";
+// import * as db from "../Database";
 import { RootState } from "../store";
 export default function Dashboard() {
   // const courses = db.courses;
